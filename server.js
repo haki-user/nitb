@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const app = express()
 
-const port = procees.env.PORT || 4000
+const port = process.env.PORT || 4000
 const mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/nitb'
 
 const mongoose = require('mongoose')
