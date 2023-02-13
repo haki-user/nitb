@@ -4,7 +4,7 @@ const path = require('path')
 const app = express()
 
 const port = process.env.PORT || 4000
-const mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/nitb'
+const mongoUrl = process.env.MONGODB_URI || 'mongodb+srv://aditya:aditya@cluster0.tsxb5lv.mongodb.net/?retryWrites=true&w=majority'
 
 const mongoose = require('mongoose')
 
@@ -41,10 +41,15 @@ const record = mongoose.Schema({
 const Record = mongoose.model("Record", record)
 
 
-
+// home page
 app.get('/', (req, res)=>{
   res.sendFile(path.join(__dirname+"/home.html"))
 })
+
+app.get('/api/v1/index', (req, res)=>{
+  res.sendFile(path.join(__dirname + '/index.html'))
+})
+
 app.post("/api/v1/upload", (req, res)=>{
   // res.send("<h1>aditya</h1>")
   res.sendFile(path.join(__dirname + "/public/login.html"))
@@ -147,6 +152,6 @@ app.get('/api/v1/graphData', (req, res)=>{
 app.set('view engine', path.join(__dirname, 'views'))
 
 app.listen(port, ()=>{
-  console.log(`ok port ${PORT}`)
+  console.log(`ok port ${port}`)
 })  
     
